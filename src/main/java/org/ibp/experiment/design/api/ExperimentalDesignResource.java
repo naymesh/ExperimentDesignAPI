@@ -40,19 +40,18 @@ public class ExperimentalDesignResource {
 
 	@RequestMapping(value = "/generate", method = RequestMethod.POST, headers = "Content-Type=application/xml")
 	@ResponseBody
-	public List<String[]> gerenateDesign(@RequestBody String body) throws Exception {
+	public BVDesignOutput gerenateDesign(@RequestBody String body) throws Exception {
 		return this.runBVDesign(body);
 	}
 
-	public List<String[]> runBVDesign(String requestXML) throws JAXBException, IOException, FileNotFoundException {
+	public BVDesignOutput runBVDesign(String requestXML) throws JAXBException, IOException, FileNotFoundException {
 		LOG.debug("Input XML is:\n{}", requestXML);
 
-		MainDesign mainDesign = ExperimentalDesignResource.toMainDesign(requestXML);
+		MainDesign mainDesign = this.toMainDesign(requestXML);
 		int returnCode = -1;
 
 		ProcessBuilder pb =
-				new ProcessBuilder(this.environmentConfig.getProperty("breeding.view.exe.path"), "-i"
-						+ ExperimentalDesignResource.writeToFile(requestXML));
+				new ProcessBuilder(this.environmentConfig.getProperty("breeding.view.exe.path"), "-i" + this.writeToFile(requestXML));
 		Process p = pb.start();
 		try {
 			InputStreamReader isr = new InputStreamReader(p.getInputStream());
@@ -75,6 +74,7 @@ public class ExperimentalDesignResource {
 		}
 
 		List<String[]> bvResult = new ArrayList<String[]>();
+		BVDesignOutput output = new BVDesignOutput(returnCode);
 		String outputFileName = mainDesign.getDesign().getParameterValue("outputfile");
 
 		if (returnCode == 0) {
@@ -82,15 +82,16 @@ public class ExperimentalDesignResource {
 			FileReader fileReader = new FileReader(outputFile);
 			CSVReader reader = new CSVReader(fileReader);
 			bvResult = reader.readAll();
+			output.setResults(bvResult);
 			fileReader.close();
 			reader.close();
 		}
 
-		LOG.debug("Result:\n{}", bvResult);
-		return bvResult;
+		LOG.debug("Result:\n{}", output);
+		return output;
 	}
 
-	private static String writeToFile(String xml) {
+	private String writeToFile(String xml) {
 		String filenamePath = new File(System.currentTimeMillis() + "-bv-input.xml").getAbsolutePath();
 		try {
 			File file = new File(filenamePath);
@@ -104,7 +105,7 @@ public class ExperimentalDesignResource {
 		return filenamePath;
 	}
 
-	public static MainDesign toMainDesign(String xmlString) throws JAXBException {
+	public MainDesign toMainDesign(String xmlString) throws JAXBException {
 		JAXBContext context = JAXBContext.newInstance(MainDesign.class);
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		return (MainDesign) unmarshaller.unmarshal(new StringReader(xmlString));
