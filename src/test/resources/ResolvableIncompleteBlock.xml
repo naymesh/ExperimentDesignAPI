@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Templates>
+	<Template name="ResolvableIncompleteBlock">
+		<Parameter name="blocksize" value="3" />
+		<Parameter name="ntreatments" value="93" />
+		<Parameter name="nreplicates" value="2" />
+		<Parameter name="treatmentfactor" value="ENTRY_NO" />
+		<Parameter name="replicatefactor" value="REP_NO" />
+		<Parameter name="blockfactor" value="BLOCK_NO" />
+		<Parameter name="plotfactor" value="PLOT_NO" />
+		<Parameter name="nblatin" value="0" />
+		<Parameter name="timelimit" value="0.1" />
+		<Parameter name="outputfile" value="DesignOutput.csv" />
+	</Template>
+</Templates>
