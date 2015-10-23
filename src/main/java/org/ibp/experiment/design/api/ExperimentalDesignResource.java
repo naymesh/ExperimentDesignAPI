@@ -44,7 +44,7 @@ public class ExperimentalDesignResource {
 		return this.runBVDesign(body);
 	}
 
-	public BVDesignOutput runBVDesign(String requestXML) throws JAXBException, IOException, FileNotFoundException {
+	public BVDesignOutput runBVDesign(String requestXML) throws JAXBException, IOException, FileNotFoundException, InterruptedException {
 		LOG.debug("Input XML is:\n{}", requestXML);
 
 		MainDesign mainDesign = this.toMainDesign(requestXML);
@@ -61,10 +61,7 @@ public class ExperimentalDesignResource {
 			while ((lineRead = br.readLine()) != null) {
 				ExperimentalDesignResource.LOG.debug(lineRead);
 			}
-
 			returnCode = p.waitFor();
-		} catch (InterruptedException e) {
-			ExperimentalDesignResource.LOG.error(e.getMessage(), e);
 		} finally {
 			if (p != null) {
 				p.getInputStream().close();
@@ -91,17 +88,13 @@ public class ExperimentalDesignResource {
 		return output;
 	}
 
-	private String writeToFile(String xml) {
+	private String writeToFile(String xml) throws IOException {
 		String filenamePath = new File(System.currentTimeMillis() + "-bv-input.xml").getAbsolutePath();
-		try {
-			File file = new File(filenamePath);
-			BufferedWriter output = new BufferedWriter(new FileWriter(file));
-			output.write(xml);
-			output.close();
-			filenamePath = file.getAbsolutePath();
-		} catch (IOException e) {
-			ExperimentalDesignResource.LOG.error(e.getMessage(), e);
-		}
+		File file = new File(filenamePath);
+		BufferedWriter output = new BufferedWriter(new FileWriter(file));
+		output.write(xml);
+		output.close();
+		filenamePath = file.getAbsolutePath();
 		return filenamePath;
 	}
 
