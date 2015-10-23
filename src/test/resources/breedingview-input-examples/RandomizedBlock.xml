@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Templates>
 	<Template name="RandomizedBlock">
+		<Parameter name="seed" value="566818273" />
 		<Parameter name="nblocks" value="2" />
 		<Parameter name="blockfactor" value="REP_NO" />
 		<Parameter name="plotfactor" value="PLOT_NO" />
@@ -8,9 +9,9 @@
 			<ListItem value="ENTRY_NO" />
 		</Parameter>
 		<Parameter name="levels">
-			<ListItem value="20" />
+			<ListItem value="2" />
 		</Parameter>
 		<Parameter name="timelimit" value="0.1" />
-		<Parameter name="outputfile" value="1416451506872-bv.csv" />
+		<Parameter name="outputfile" value="1445566818273-bv.csv" />
 	</Template>
 </Templates>

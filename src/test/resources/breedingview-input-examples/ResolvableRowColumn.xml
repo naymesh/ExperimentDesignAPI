@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Templates>
+	<Template name="ResolvableRowColumn">
+		<Parameter name="seed" value="567440627" />
+		<Parameter name="ntreatments" value="18" />
+		<Parameter name="nreplicates" value="2" />
+		<Parameter name="nrows" value="6" />
+		<Parameter name="ncolumns" value="3" />
+		<Parameter name="treatmentfactor" value="ENTRY_NO" />
+		<Parameter name="replicatefactor" value="REP_NO" />
+		<Parameter name="rowfactor" value="ROW" />
+		<Parameter name="columnfactor" value="COL" />
+		<Parameter name="plotfactor" value="PLOT_NO" />
+		<Parameter name="nrlatin" value="0" />
+		<Parameter name="nclatin" value="0" />
+		<Parameter name="timelimit" value="0.1" />
+		<Parameter name="outputfile" value="1445567440627-bv.csv" />
+	</Template>
+</Templates>
