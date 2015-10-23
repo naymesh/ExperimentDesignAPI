@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class BVDesignOutput implements Serializable {
 
 	private static final long serialVersionUID = -1079217702697901056L;
@@ -16,8 +18,10 @@ public class BVDesignOutput implements Serializable {
 	private List<String[]> bvResultList;
 	private List<Map<String, String>> bvResultMap;
 
+	public BVDesignOutput() {
+	}
+
 	public BVDesignOutput(int returnCode) {
-		super();
 		this.returnCode = returnCode;
 	}
 
@@ -88,6 +92,7 @@ public class BVDesignOutput implements Serializable {
 		return val;
 	}
 
+	@JsonIgnore
 	public boolean isSuccess() {
 		if (this.returnCode == 0) {
 			return true;

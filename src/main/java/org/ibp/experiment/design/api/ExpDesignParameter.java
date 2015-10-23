@@ -15,11 +15,9 @@ public class ExpDesignParameter implements Serializable {
 	private List<ListItem> listItem; // would only be created in xml if not null
 
 	public ExpDesignParameter() {
-		super();
 	}
 
 	public ExpDesignParameter(String name, String value) {
-		super();
 		this.name = name;
 		this.value = value;
 	}

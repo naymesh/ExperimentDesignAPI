@@ -11,11 +11,9 @@ public class ListItem implements Serializable {
 	private String value;
 
 	public ListItem() {
-		super();
 	}
 
 	public ListItem(String value) {
-		super();
 		this.value = value;
 	}
 

@@ -13,11 +13,9 @@ public class MainDesign implements Serializable {
 	private ExpDesign design;
 
 	public MainDesign() {
-
 	}
 
 	public MainDesign(ExpDesign design) {
-		super();
 		this.design = design;
 	}
 

@@ -15,11 +15,9 @@ public class ExpDesign implements Serializable {
 	private List<ExpDesignParameter> parameters;
 
 	public ExpDesign() {
-		super();
 	}
 
 	public ExpDesign(String name, List<ExpDesignParameter> parameters) {
-		super();
 		this.name = name;
 		this.parameters = parameters;
 	}
