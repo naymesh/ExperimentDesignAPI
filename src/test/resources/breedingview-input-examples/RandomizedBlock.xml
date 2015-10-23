@@ -9,7 +9,7 @@
 			<ListItem value="ENTRY_NO" />
 		</Parameter>
 		<Parameter name="levels">
-			<ListItem value="2" />
+			<ListItem value="18" />
 		</Parameter>
 		<Parameter name="timelimit" value="0.1" />
 		<Parameter name="outputfile" value="1445566818273-bv.csv" />
