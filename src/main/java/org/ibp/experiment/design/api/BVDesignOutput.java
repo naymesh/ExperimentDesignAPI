@@ -18,6 +18,8 @@ public class BVDesignOutput implements Serializable {
 	private List<String[]> bvResultList;
 	private List<Map<String, String>> bvResultMap;
 
+	private String breedingViewOutput;
+
 	public BVDesignOutput() {
 	}
 
@@ -98,6 +100,14 @@ public class BVDesignOutput implements Serializable {
 			return true;
 		}
 		return false;
+	}
+
+	public String getBreedingViewOutput() {
+		return this.breedingViewOutput;
+	}
+
+	public void setBreedingViewOutput(String breedingViewOutput) {
+		this.breedingViewOutput = breedingViewOutput;
 	}
 
 	@Override

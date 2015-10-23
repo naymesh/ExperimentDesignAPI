@@ -53,12 +53,15 @@ public class ExperimentalDesignResource {
 		ProcessBuilder pb =
 				new ProcessBuilder(this.environmentConfig.getProperty("breeding.view.exe.path"), "-i" + this.writeToFile(requestXML));
 		Process p = pb.start();
+		StringBuffer bvOutput = new StringBuffer();
+
 		try {
 			InputStreamReader isr = new InputStreamReader(p.getInputStream());
 			BufferedReader br = new BufferedReader(isr);
 
 			String lineRead;
 			while ((lineRead = br.readLine()) != null) {
+				bvOutput.append(lineRead);
 				ExperimentalDesignResource.LOG.debug(lineRead);
 			}
 			returnCode = p.waitFor();
@@ -83,7 +86,7 @@ public class ExperimentalDesignResource {
 			fileReader.close();
 			reader.close();
 		}
-
+		output.setBreedingViewOutput(bvOutput.toString());
 		LOG.debug("Result:\n{}", output);
 		return output;
 	}
