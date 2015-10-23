@@ -51,4 +51,8 @@ public class ExpDesignParameter implements Serializable {
 		this.listItem = listItem;
 	}
 
+	@Override
+	public String toString() {
+		return "ExpDesignParameter [name=" + this.name + ", value=" + this.value + ", listItem=" + this.listItem + "]";
+	}
 }

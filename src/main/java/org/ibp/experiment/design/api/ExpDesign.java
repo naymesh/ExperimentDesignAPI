@@ -82,4 +82,9 @@ public class ExpDesign implements Serializable {
 		}
 		return new ArrayList<ListItem>();
 	}
+
+	@Override
+	public String toString() {
+		return "ExpDesign [name=" + this.name + ", parameters=" + this.parameters + "]";
+	}
 }

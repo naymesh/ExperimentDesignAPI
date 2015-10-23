@@ -30,4 +30,9 @@ public class MainDesign implements Serializable {
 		this.design = design;
 	}
 
+	@Override
+	public String toString() {
+		return "MainDesign [design=" + this.design + "]";
+	}
+
 }

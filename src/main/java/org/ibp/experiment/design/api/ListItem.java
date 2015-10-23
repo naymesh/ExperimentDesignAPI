@@ -28,4 +28,9 @@ public class ListItem implements Serializable {
 		this.value = value;
 	}
 
+	@Override
+	public String toString() {
+		return "ListItem [value=" + this.value + "]";
+	}
+
 }
